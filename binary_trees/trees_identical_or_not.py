@@ -43,8 +43,8 @@ def identical_or_not_iterative(a, b):
     queue2.append(b)
 
     while(len(queue1) > 0 and len(queue2) > 0):
-        n1 = queue1.pop()
-        n2 = queue2.pop()
+        n1 = queue1.pop(0)
+        n2 = queue2.pop(0)
 
         if(n1.data != n2.data):
             return False
