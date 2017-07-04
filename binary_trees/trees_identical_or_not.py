@@ -52,13 +52,13 @@ def identical_or_not_iterative(a, b):
         if(n1.left is not None and n2.left is not None):
             queue1.append(n1.left)
             queue2.append(n2.left)
-        elif(n1.left is None or n2.left is None):
+        elif(n1.left is not None or n2.left is not None):
             return False
 
         if(n1.right is not None and n2.right is not None):
             queue1.append(n1.right)
             queue2.append(n2.right)
-        elif(n1.right is None or n2.right is None):
+        elif(n1.right is not None or n2.right is not None):
             return False
 
     return True
