@@ -12,29 +12,24 @@ class Node:
         self.right = None
 
 
-def top_view_recursive_util(a, m, hd, level):
+def top_view_recursive_util(a, m, hd):
     if(a is None):
         return
 
-    top_view_recursive_util(a.left, m, hd-1, level+1)
+    top_view_recursive_util(a.left, m, hd-1)
 
-    if hd in m:
-        if(level < m[hd][1]):
-            m.update({hd: [a.data, level]})
-    else:
-        m[hd] = [a.data, level]
+    m[hd] = a.data
 
-    top_view_recursive_util(a.right, m, hd+1, level+1)
+    top_view_recursive_util(a.right, m, hd+1)
 
 
 def top_view_recursive(a):
     m = {}
     hd = 0
-    level = 0
-    top_view_recursive_util(a, m, hd, level)
+    top_view_recursive_util(a, m, hd)
 
     for key, value in m.items():
-        print (value[0], end=" ")
+        print (value, end=" ")
 
 
 def top_view_iterative(a):
@@ -70,9 +65,9 @@ if __name__ == "__main__":
     root1.left.left = Node(4)
     root1.left.right = Node(5)
 
-    top_view_recursive(root1)
+    top_view_recursive(root1)   # 4 2 1 3
     print()
-    top_view_iterative(root1)
+    top_view_iterative(root1)   # 1 2 3 4
     print()
 
     root2 = Node(1)
@@ -85,7 +80,7 @@ if __name__ == "__main__":
     root2.left.right.right = Node(7)
     root2.left.right.right.right = Node(8)
 
-    top_view_recursive(root2)
+    top_view_recursive(root2)   # 6 4 2 1 3 9
     print()
-    top_view_iterative(root2)
+    top_view_iterative(root2)   # 1 2 3 4 9 6
     print()
