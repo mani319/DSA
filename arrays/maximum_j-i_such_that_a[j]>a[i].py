@@ -14,22 +14,22 @@ Approach:http://www.geeksforgeeks.org/given-an-array-arr-find-the-maximum-j-i-su
 def maximum_j_minus_i_such_that_aj_grtr_than_ai(arr):
     n = len(arr)
 
-    # LMin[i] stores the minimum value from (arr[0], arr[1], ... arr[i])
-    LMin = [0]*n
-    LMin[0] = arr[0]
+    # lMin[i] stores the minimum value from (arr[0], arr[1], ... arr[i])
+    lMin = [0]*n
+    lMin[0] = arr[0]
     for i in range(1, n):
-        LMin[i] = min(arr[i], LMin[i-1])
+        lMin[i] = min(arr[i], lMin[i-1])
 
-    # RMax[j] stores the maximum value from (arr[j], arr[j+1], ..arr[n-1])
-    RMax = [0]*n
-    RMax[n-1] = arr[n-1]
+    # rMax[j] stores the maximum value from (arr[j], arr[j+1], ..arr[n-1])
+    rMax = [0]*n
+    rMax[n-1] = arr[n-1]
     for i in range(n-2, -1, -1):
-        RMax[i] = max(arr[i], RMax[i+1])
+        rMax[i] = max(arr[i], rMax[i+1])
 
     # Traverse both arrays from left to right to find optimum j - i
     i, j, max_diff = 0, 0, -1
     while(i < n and j < n):
-        if(RMax[j] > LMin[i]):
+        if(rMax[j] > lMin[i]):
             max_diff = max(j-i, max_diff)
             j += 1
         else:
