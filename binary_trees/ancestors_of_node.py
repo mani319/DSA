@@ -1,5 +1,3 @@
-
-
 class Node:
     def __init__(self, value):
         self.data = value
@@ -7,18 +5,18 @@ class Node:
         self.right = None
 
 
-def find_diameter(root, height):
+def ancestors(root, val):
     if(root is None):
-        return 0
+        return False
 
-    lh, rh = [0], [0]
+    if(root.data == val):
+        return True
 
-    leftDiameter = find_diameter(root.left, lh)
-    rightDiameter = find_diameter(root.right, rh)
+    if(ancestors(root.left, val) or ancestors(root.right, val)):
+        print(root.data, end=" ")
+        return True
 
-    height[0] = max(lh[0], rh[0]) + 1
-
-    return max(lh[0]+rh[0]+1, leftDiameter, rightDiameter)
+    return False
 
 
 if __name__ == "__main__":
@@ -29,4 +27,5 @@ if __name__ == "__main__":
     root.left.right = Node(5)
     root.left.left.left = Node(6)
 
-    print(find_diameter(root, [0]))
+    val = 5
+    ancestors(root, val)
