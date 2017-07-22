@@ -19,10 +19,11 @@ def all_subarrays_with_zero_sum(arr):
             for j in range(len(starts)):
                 result.append([starts[j]+1, i])
                 largest = max(i-starts[j], largest)
-        else:
-            hash_map[curr_sum] = []
 
-        hash_map[curr_sum].append(i)
+        try:
+            hash_map[curr_sum].append(i)
+        except KeyError:
+            hash_map[curr_sum] = [i]
 
     return result, largest
 
