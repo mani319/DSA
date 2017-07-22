@@ -3,26 +3,31 @@ The N Queen is the problem of placing N chess queens on an N×N chessboard
    so that no two queens attack each other.
 '''
 
-N = 8
-print_all_solutions = False
+N = 4
+print_all_solutions = True
 
 
 def isSafe(board, row, col):
-    # Check whether there is any queen in row
-    for i in range(N):
+    # Check whether there is any queen in left side of this row
+    for i in range(col):
         if(board[row][i] == 1):
             return False
 
-    # Check whether there is any queen in column
-    for i in range(N):
-        if(board[i][col] == 1):
+    # Check whether there is any queen in it's top left diagonal
+    i, j = row, col
+    while(i >= 0 and j >= 0):
+        if(board[i][j] == 1):
             return False
+        i -= 1
+        j -= 1
 
-    # Check whether there is any queen in it's diagonals
-    for i in range(N):
-        if((row+col-i >= 0 and row+col-i < N and board[i][row+col-i]) or
-           (i-row+col >= 0 and i-row+col < N and board[i][i-row+col])):
+    # Check whether there is any queen in it's bottom left diagonal
+    i, j = row, col
+    while(i < N and j >= 0):
+        if(board[i][j] == 1):
             return False
+        i += 1
+        j -= 1
 
     return True
 
