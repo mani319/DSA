@@ -20,10 +20,10 @@ def all_subarrays_with_given_sum(arr, given_sum):
                 result.append([starts[j]+1, i])
                 largest = max(i-starts[j], largest)
 
-        if(curr_sum not in hash_map.keys()):
-            hash_map[curr_sum] = [i]
-        else:
+        try:
             hash_map[curr_sum].append(i)
+        except KeyError:
+            hash_map[curr_sum] = [i]
 
     return result, largest
 

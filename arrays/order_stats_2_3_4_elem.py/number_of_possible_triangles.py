@@ -6,12 +6,14 @@ def numOfTriangles(arr):
     count = 0
 
     for i in range(0, n-2):
+        j = i + 1
         k = i + 2
-        for j in range(i+1, n):
+        while(j < n):
             while(k < n and arr[i]+arr[j] > arr[k]):
                 k += 1
 
             count += (k - j - 1)
+            j += 1
 
     return count
 

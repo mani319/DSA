@@ -7,8 +7,8 @@ def move_elements_greater_than_x_to_right(arr, x):
 
     i, j = 0, n-1
     while(i < j):
-        if(arr[i] > 10):
-            if(arr[j] <= 10):
+        if(arr[i] > x):
+            if(arr[j] <= x):
                 arr[i], arr[j] = arr[j], arr[i]
                 i += 1
             j -= 1
