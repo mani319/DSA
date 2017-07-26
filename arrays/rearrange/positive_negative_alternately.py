@@ -26,7 +26,7 @@ def segregate(arr):
     return j
 
 
-def rearrangePosNegsAlternately(arr):
+def rearrangePosNegsAlternately1(arr):
     n = len(arr)
     index = segregate(arr)
 
@@ -40,11 +40,36 @@ def rearrangePosNegsAlternately(arr):
     return arr
 
 
+def rearrangePosNegsAlternately2(arr):
+    length = len(arr)
+    flag = 1
+    j = 0
+    for i in range(length):
+        if(flag == 1):
+            if(arr[i] < 0):
+                while((j < length-1) and (arr[j] < 0)):
+                    j += 1
+                arr[i], arr[j] = arr[j], arr[i]
+            flag = 0
+        else:
+            if(arr[i] > 0):
+                while((j < length-1) and (arr[j] > 0)):
+                    j += 1
+                arr[i], arr[j] = arr[j], arr[i]
+            flag = 1
+
+        if(j < i):
+            j = i+1
+
+    return arr
+
+
 if __name__ == "__main__":
     arrays = [[-1, 2, -3, 4, 5, 6, -7, 8, 9],
               [12, 11, -13, -5, 6, -7, 5, -3, -6]]
 
     for array in arrays:
         print(array)
-        print("Rearranged:", rearrangePosNegsAlternately(array))
+        print("Rearranged:", rearrangePosNegsAlternately1(array))
+        print("Rearranged:", rearrangePosNegsAlternately2(array))
         print("----------------------------------------------------")
