@@ -17,13 +17,8 @@ def path_with_sum_exists(root, sum):
     if(rem_sum == 0 and isLeaf(root)):
         return True
 
-    if(path_with_sum_exists(root.left, rem_sum)):
-        return True
-
-    if(path_with_sum_exists(root.right, rem_sum)):
-        return True
-
-    return False
+    return (path_with_sum_exists(root.left, rem_sum) or
+            path_with_sum_exists(root.right, rem_sum))
 
 
 if __name__ == "__main__":
@@ -34,7 +29,7 @@ if __name__ == "__main__":
     root.left.right = Node(5)
     root.left.left.left = Node(6)
 
-    sums = [15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+    sums = [18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
     for sum in sums:
         print("sum:", sum, end=" ")
         if(path_with_sum_exists(root, sum)):

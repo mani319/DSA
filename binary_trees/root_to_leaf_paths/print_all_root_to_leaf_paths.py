@@ -5,12 +5,6 @@ class Node:
         self.right = None
 
 
-def printPath(arr, size):
-    for i in range(size):
-        print(arr[i], end=" ")
-    print()
-
-
 def root_to_leaf_paths_util(root, paths, path_len):
     if(root is None):
         return
@@ -19,7 +13,7 @@ def root_to_leaf_paths_util(root, paths, path_len):
     path_len += 1
 
     if(root.left is None and root.right is None):
-        printPath(paths, path_len)
+        print(paths[:path_len])
     else:
         root_to_leaf_paths_util(root.left, paths, path_len)
         root_to_leaf_paths_util(root.right, paths, path_len)
