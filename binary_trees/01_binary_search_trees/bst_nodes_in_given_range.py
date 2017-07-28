@@ -14,6 +14,7 @@ def nodesInRange(root, low, high):
         return 1
 
     if(low <= root.data and high >= root.data):
+        # print(root.data, end=" ")
         return (1 +
                 nodesInRange(root.left, low, high) +
                 nodesInRange(root.right, low, high))
