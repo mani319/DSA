@@ -48,6 +48,7 @@ def searchElement(arr, key):
     else:
         return binarySearch(arr, 0, n-1, key)
 
+
 if __name__ == "__main__":
     arrays = [[5, 6, 7, 8, 9, 10, 1, 2, 3],
               [30, 40, 50, 10, 20],
