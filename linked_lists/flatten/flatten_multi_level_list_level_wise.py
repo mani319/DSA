@@ -28,7 +28,3 @@ def flatten_multi_level_list(head):
         curr = curr.next
 
     return head
-
-
-if __name__ == "__main__":
-    
