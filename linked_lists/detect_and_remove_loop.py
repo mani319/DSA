@@ -19,8 +19,8 @@ def insert_at_end(head, value):
 
 
 def detect_and_remove_loop(head):
-    if(head is None):
-        return None
+    if(head is None or head.next is None):
+        return head
 
     slowp, fastp = head, head
     while(fastp and fastp.next):
@@ -41,7 +41,7 @@ def detect_and_remove_loop(head):
 
     else:
         print("No loop in list")
-        return None
+        return head
 
     return head
 
