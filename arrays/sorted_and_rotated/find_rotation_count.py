@@ -1,5 +1,5 @@
 def minElementIndex(arr, low, high):
-    if(low <= high):
+    while(low <= high):
         mid = low + (high-low)//2
 
         if(mid < high and arr[mid] > arr[mid+1]):
@@ -7,9 +7,9 @@ def minElementIndex(arr, low, high):
         if(mid > low and arr[mid] < arr[mid-1]):
             return mid
         if(arr[mid] > arr[mid-1]):
-            return minElementIndex(arr, mid+1, high)
+            low = mid+1
         else:
-            return minElementIndex(arr, low, mid-1)
+            high = mid-1
 
     return 0
 

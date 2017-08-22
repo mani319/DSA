@@ -41,7 +41,7 @@ def array_modify(arr):
     for i in range(n):
         if(abs(arr[i])-1 < n):
             if(arr[abs(arr[i])-1] > 0):
-                arr[abs(arr[i])-1] = -arr[abs(arr[i])-1]
+                arr[abs(arr[i])-1] *= -1
 
     for i in range(n):
         if(arr[i] > 0):

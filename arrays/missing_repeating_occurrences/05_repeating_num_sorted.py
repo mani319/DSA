@@ -6,7 +6,7 @@ Find the number in O(log n) time & constant space.
 
 
 def searchRepeating(arr, low, high):
-    if(low < high):
+    while(low <= high):
         mid = low + (high - low)//2
 
         if((mid > 0 and arr[mid] == arr[mid-1]) or
@@ -14,9 +14,9 @@ def searchRepeating(arr, low, high):
             return mid
 
         if(arr[mid] == mid+1):
-            return searchRepeating(arr, mid+1, high)
+            low = mid + 1
         else:
-            return searchRepeating(arr, low, mid-1)
+            high = mid-1
 
     return -1
 
@@ -34,7 +34,8 @@ def elementRepeating(arr):
 if __name__ == "__main__":
     arrays = [[1, 2, 3, 4, 4],
               [1, 1, 2, 3, 4],
-              [1, 2, 3, 3, 4, 5]]
+              [1, 2, 3, 3, 4, 5],
+              [1, 2, 3, 4, 5]]
 
     for array in arrays:
         print(array)
