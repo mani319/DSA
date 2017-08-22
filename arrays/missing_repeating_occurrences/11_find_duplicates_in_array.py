@@ -12,18 +12,18 @@ Method2:http://www.geeksforgeeks.org/duplicates-array-using-o1-extra-space-set-2
 
 def find_duplicates_constant_space_method_1(arr):
     '''
-        *** Doesn't work for all inputs ***
+    Have to convert list to set and then back to list
     '''
     n = len(arr)
     duplicates = []
 
     for i in range(n):
         if(arr[abs(arr[i])] >= 0):
-            arr[abs(arr[i])] = -arr[abs(arr[i])]
+            arr[abs(arr[i])] *= -1
         else:
             duplicates.append(abs(arr[i]))
 
-    return duplicates
+    return list(set(duplicates))
 
 
 def find_duplicates_constant_space_method_2(arr):

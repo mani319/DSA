@@ -38,13 +38,13 @@ def rainWaterTrapped2(arr):
                 lMax = arr[l]
             else:
                 waterTrapped += lMax - arr[l]
-                l += 1
+            l += 1
         else:
             if(arr[r] > rMax):
                 rMax = arr[r]
             else:
                 waterTrapped += rMax - arr[r]
-                r -= 1
+            r -= 1
 
     return waterTrapped
 

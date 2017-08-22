@@ -45,9 +45,21 @@ def sum_method(arr):
     print("Num occuring twice:", repeating)
 
 
+def array_modify(arr):
+    n = len(arr)
+
+    for i in range(n):
+        if(arr[abs(arr[i])-1] >= 0):
+            arr[abs(arr[i])-1] *= -1
+        else:
+            print("Num occuring twice:", abs(arr[i]))
+            break
+
+
 def elementThatAppearsTwice(arr):
     xor_method(arr)
     sum_method(arr)
+    array_modify(arr)
 
 
 if __name__ == "__main__":

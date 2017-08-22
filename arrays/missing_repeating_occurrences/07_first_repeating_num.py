@@ -44,7 +44,7 @@ def hashing_method(arr):
     if(mini == -1):
         print("No repeating elements")
     else:
-        print("First Repeating Element: ", arr[mini])
+        print("First Repeating Element:", arr[mini])
 
 
 def firstRepeating(arr):
@@ -53,7 +53,8 @@ def firstRepeating(arr):
 
 if __name__ == "__main__":
     arrays = [[10, 5, 3, 4, 3, 5, 6],
-              [6, 10, 5, 4, 9, 120, 4, 6, 10]]
+              [6, 10, 5, 4, 9, 120, 4, 6, 10],
+              [1, 2, 3, 4]]
 
     for array in arrays:
         print(array)

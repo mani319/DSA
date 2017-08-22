@@ -54,7 +54,7 @@ def array_modify(arr):
     print("Nums occuring twice:", end=" ")
     for i in range(n):
         if(arr[abs(arr[i])-1] > 0):
-            arr[abs(arr[i])-1] = -arr[abs(arr[i])-1]
+            arr[abs(arr[i])-1] *= -1
         else:
             print(abs(arr[i]), end=" ")
     print()
