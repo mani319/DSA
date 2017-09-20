@@ -10,16 +10,14 @@ def nodesInRange(root, low, high):
     if(root is None):
         return 0
 
-    if(low == root.data and high == root.data):
-        return 1
-
     if(low <= root.data and high >= root.data):
-        # print(root.data, end=" ")
         return (1 +
                 nodesInRange(root.left, low, high) +
                 nodesInRange(root.right, low, high))
+
     elif(low < root.data):
         return nodesInRange(root.left, low, high)
+
     else:
         return nodesInRange(root.right, low, high)
 

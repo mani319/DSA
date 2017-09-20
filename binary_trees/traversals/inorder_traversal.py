@@ -38,7 +38,24 @@ def inOrderIterativeUsingStack(root):
 
 
 def inOrderIterativeMorris(root):
-    return
+
+    curr = root
+    while(curr):
+        if(curr.left is None):
+            print (curr.data, end=" ")
+            curr = curr.right
+        else:
+            tmp = curr.left
+            while(tmp.right and tmp.right != curr):
+                tmp = tmp.right
+
+            if(tmp.right is None):
+                tmp.right = curr
+                curr = curr.left
+            else:
+                tmp.right = None
+                print (curr.data, end=" ")
+                curr = curr.right
 
 
 if __name__ == "__main__":
@@ -51,3 +68,5 @@ if __name__ == "__main__":
     inOrderRecursive(root)
     print()
     inOrderIterativeUsingStack(root)
+    print()
+    inOrderIterativeMorris(root)
