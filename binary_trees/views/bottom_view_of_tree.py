@@ -12,25 +12,29 @@ class Node:
         self.right = None
 
 
-def bottom_view_recursive_util(a, m, hd):
+def bottom_view_recursive_util(a, m, hd, level):
     if(a is None):
         return
 
-    bottom_view_recursive_util(a.left, m, hd-1)
+    bottom_view_recursive_util(a.left, m, hd-1, level+1)
 
-    if hd not in m:
-        m[hd] = a.data
+    if hd in m:
+        if(level > m[hd][1]):
+            m.update({hd: [a.data, level]})
+    else:
+        m[hd] = [a.data, level]
 
-    bottom_view_recursive_util(a.right, m, hd+1)
+    bottom_view_recursive_util(a.right, m, hd+1, level+1)
 
 
 def bottom_view_recursive(a):
     m = {}
     hd = 0
-    bottom_view_recursive_util(a, m, hd)
+    level = 0
+    bottom_view_recursive_util(a, m, hd, level)
 
     for key, value in m.items():
-        print (value, end=" ")
+        print (value[0], end=" ")
 
 
 def bottom_view_iterative(a):
@@ -79,8 +83,11 @@ if __name__ == "__main__":
     root2.left.left.left = Node(6)
     root2.left.right.right = Node(7)
     root2.left.right.right.right = Node(8)
+    root2.right.left = Node(10)
+    root2.right.right.left = Node(11)
+    root2.right.right.right = Node(12)
 
-    bottom_view_recursive(root2)    # 6 4 2 5 7 8
+    bottom_view_recursive(root2)    # 6 4 2 5 7 8 12
     print()
-    bottom_view_iterative(root2)    # 5 2 7 4 8 6
+    bottom_view_iterative(root2)    # 10 2 11 4 8 6 12
     print()
